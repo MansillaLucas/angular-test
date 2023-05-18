@@ -44,4 +44,49 @@ funciones del mismo lenguaje dentro de las mismas. Esto es lo que se conoce como
 <input type="text" required [(ngModel)]="person.name"/>
 <p *ngIf="person.name === 'lucas'">Buenos días, soy Lucas</p>
 
+<P *ngIf="person.name == 'lucas';then thenMyBlock else otherElseMyBlock"> Esto es una prueba Angular</P>
+<ng-template #thenMyBlock>
+  <p>Es un día excelente...</p>
+</ng-template>
+<ng-template #otherElseMyBlock>
+  <p>No sos Lucas 😡</p>
+</ng-template>
+
+<h1>*ngFor</h1>
+<input type="text" required [(ngModel)]="newWord"/>
+<button (click)="addSomething()">Agregar elemento</button>
+<ul>
+  <li *ngIf="emojis.length === 0">No hay elementos</li>
+  <li *ngFor="let e of emojis; index as i">
+    {{i}} {{e}}
+    <button (click)="deleteSomething(i)">Borrar</button>
+  </li>
+</ul>
+
+<h1>*ngFor Objs</h1>
+<div>
+  <div *ngFor="let p of products">
+    <img [src]="p.image" alt="img" width="200" height="150"/>
+    <h3>Precio: ${{p.price}}</h3>
+    <p>{{p.name}}</p>
+  </div>
+</div>
+
+<h1>*ngSwitch</h1>
+<input type="text" required [(ngModel)]="person.name"/>
+<div [ngSwitch]="person.name">
+  <p *ngSwitchCase="'Lucas'">
+      El nombre el Lucas
+  </p>
+  <p *ngSwitchCase="'Cams'">
+      El nombre el Cams
+  </p>
+  <p *ngSwitchCase="'Coco'">
+      El nombre el Coco
+  </p>
+  <p *ngSwitchDefault>
+      No hay ningún nombre que coincida
+  </p>
+</div>
+
 <router-outlet></router-outlet>

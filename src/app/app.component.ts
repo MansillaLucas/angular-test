@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {Product} from './product.model'
+// Es necesario importar las librerías necesarias para que funcionen.
 
 // Este metadato especificado en esta parte le indica a Angular las configuraciones de este componente, 
 // como también los archivos que usa para renderizarlo, ya sea su estructura mediante el html o sus
@@ -19,6 +21,45 @@ export class AppComponent {
     name: 'Carlos',
     age: 34
   }
+  newWord = '';
+  emojis = [ '😂' , '🐦', '🐳','🌮', '💚']
+
+  // Al asignar una interfaz a un atributo podemos especificarle los atributos que tiene habilitado para su uso.
+  // Esto quiere decir que si a un objeto dentro de este arreglo le ponemos un atributo de más que no esté presente
+  // en la interfaz Product, nos va a tirar un aviso de que es un atributo invalido.
+
+  products:Product[] = [
+    {
+      name: 'EL mejor juguete',
+      price: 565,
+      image: 'https://raw.githubusercontent.com/platzi/angular-fundamentals/10-step/src/assets/images/toy.jpg'
+    },
+    {
+      name: 'Bicicleta casi nueva',
+      price: 356,
+      image: 'https://raw.githubusercontent.com/platzi/angular-fundamentals/10-step/src/assets/images/bike.jpg'
+    },
+    {
+      name: 'Colleción de albumnes',
+      price: 34,
+      image: 'https://raw.githubusercontent.com/platzi/angular-fundamentals/10-step/src/assets/images/album.jpg'
+    },
+    {
+      name: 'Mis libros',
+      price: 23,
+      image: 'https://raw.githubusercontent.com/platzi/angular-fundamentals/10-step/src/assets/images/books.jpg'
+    },
+    {
+      name: 'Casa para perro',
+      price: 34,
+      image: 'https://raw.githubusercontent.com/platzi/angular-fundamentals/10-step/src/assets/images/house.jpg'
+    },
+    {
+      name: 'Gafas',
+      price: 3434,
+      image: 'https://raw.githubusercontent.com/platzi/angular-fundamentals/10-step/src/assets/images/glasses.jpg'
+    }
+  ]
 
   toggleButton() {
     this.btnDisabled = !this.btnDisabled;
@@ -36,6 +77,15 @@ export class AppComponent {
   changeName(e: Event){
     const elem = e.target as HTMLInputElement;
     this.person.name = elem.value;
+  }
+
+  addSomething(){
+    this.emojis.push(this.newWord);
+    this.newWord = '';
+  }
+
+  deleteSomething(index:number){
+    this.emojis.splice(index,1);
   }
 
 }
