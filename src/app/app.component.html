@@ -64,7 +64,7 @@ funciones del mismo lenguaje dentro de las mismas. Esto es lo que se conoce como
 </ul>
 
 <h1>*ngFor Objs</h1>
-<div>
+<div class="products--grid">
   <div *ngFor="let p of products">
     <img [src]="p.image" alt="img" width="200" height="150"/>
     <h3>Precio: ${{p.price}}</h3>
@@ -88,5 +88,67 @@ funciones del mismo lenguaje dentro de las mismas. Esto es lo que se conoce como
       No hay ningún nombre que coincida
   </p>
 </div>
+
+<h1>Clases y estilos</h1>
+<input type="text" required #nameInput2="ngModel" [(ngModel)]="person.name"/>
+<p class="message-error" [class.invalid]="nameInput2.invalid">El campo es requerido</p>
+
+<!-- Variables templates -->
+<label [style.font-style]="nameInput3.invalid ? 'italic' : 'normal'">Este texto lanza error</label>
+<input type="text" required #nameInput3="ngModel" [(ngModel)]="person.name"/>
+<p [style.font-style]="nameInput3.invalid ? 'italic' : 'normal'">Texto de ejemplo</p>
+
+<div class="style">
+  <div>
+    <input type="text" [(ngModel)]="widthImg">
+  </div>
+  <div>
+    <img [style.width.px]="widthImg" [src]="imgSource">
+  </div>
+</div>
+
+<h1>NgClass & NgStyle</h1>
+<!-- Forma particular -->
+<input type="text" required #nameInput4="ngModel" [(ngModel)]="person.name"/>
+<hr class="line-error"
+  [ngClass]="{
+    'valid':nameInput4.valid,
+    'invalid':nameInput4.invalid
+  }"
+/>
+<!-- Forma grupal -->
+<div class="style">
+  <div>
+    <input type="number" [(ngModel)]="box.width">
+    <input type="number" [(ngModel)]="box.height">
+    <input type="color" [(ngModel)]="box.background">
+  </div>
+  <div [ngStyle]="{
+    'width.px':box.width,
+    'height.px':box.height,
+    'background-color':box.background
+  }"></div>
+</div>
+
+<h1>Formulario sencillo</h1>
+<form #myForm>
+
+  <div class="input-group">
+    <label for="name">Nombre de usuario</label>
+    <input type="text" name="username" required #formUsername="ngModel" id="name" [(ngModel)]="form.username"/>
+    <p class="message-error" [class.invalid]="formUsername.invalid">El campo es requerido</p>
+  </div>
+  <div class="input-group">
+    <label for="name">Correo electronico</label>
+    <input type="email" name="email" required email #formEmail="ngModel" id="name" [(ngModel)]="form.email"/>
+    <p class="message-error" [class.invalid]="formEmail.invalid">El campo es requerido y debe tener formato de email</p>
+  </div>
+  <div class="input-group">
+    <label for="name">Contraseña</label>
+    <input type="text" name="password" required #formPassword="ngModel" id="name" [(ngModel)]="form.password"/>
+    <p class="message-error" [class.invalid]="formPassword.invalid">El campo es requerido</p>
+  </div>
+
+</form>
 
 <router-outlet></router-outlet>

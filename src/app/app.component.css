@@ -4,3 +4,64 @@
     overflow-y: scroll;
     background-color: gray;
 }
+
+.products--grid{
+    display:flex;
+    flex-direction: column;
+    > div{
+        margin: 0 25px 10px;
+        > img{
+            width:100%;
+            border-radius:10px;
+        }
+        > h2,p{
+            margin:0;
+        }
+    }
+
+}
+
+/* Tablets */
+@media screen and (min-width: 40em) {
+    .products--grid{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 15px;
+            > div{
+                margin: 0 5px 10px;
+            }
+    }
+}
+
+/* Desktop */
+@media screen and (min-width: 62em) {
+    .products--grid{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 15px;
+        > div{
+            margin: 0 5px 10px;
+        }
+    }
+}
+
+.message-error{
+    background: red;
+    color: white;
+    opacity: 0;
+    transition: 0.5s;
+    &.invalid{
+        opacity: 1;
+    }
+}
+
+.line-error{
+    height: 0;
+    border-bottom: 1px solid;
+    &.invalid{
+        border-color: red;
+    }
+    &.valid{
+        border-color: green;
+    }
+}

@@ -23,7 +23,17 @@ export class AppComponent {
   }
   newWord = '';
   emojis = [ '😂' , '🐦', '🐳','🌮', '💚']
-
+  widthImg=100;
+  box = {
+    width:100,
+    height:100,
+    background: 'red'
+  }
+  form = {
+    username:'',
+    email:'',
+    password:''
+  }
   // Al asignar una interfaz a un atributo podemos especificarle los atributos que tiene habilitado para su uso.
   // Esto quiere decir que si a un objeto dentro de este arreglo le ponemos un atributo de más que no esté presente
   // en la interfaz Product, nos va a tirar un aviso de que es un atributo invalido.
